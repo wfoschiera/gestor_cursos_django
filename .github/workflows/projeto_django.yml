@@ -1,0 +1,50 @@
+name: Python application
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    env:
+#      PIPENV_NO_INHERIT: 1
+#      PIPENV_IGNORE_VIRTUALENVS: 1
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:11.5
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports: ['5432:5432']
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Copying configurations
+      run: |
+        cp contrib/env-sample .env
+    - name: Install dependencies
+      run: |
+        pip install poetry
+        poetry install
+    - name: Lint with flake8
+      run: |
+        poetry run flake8 .
+    - name: Test with pytest
+      run: |
+        poetry run pytest pythonpro --cov=pythonpro
+    - name: Posting Coverage
+      run: |
+        uses: codecov/codecov-action@v1
+            with:
+              token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+              fail_ci_if_error: false # optional (default = false)
+              verbose: true # optional (default = false)
