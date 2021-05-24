@@ -38,6 +38,7 @@ jobs:
     - name: Lint with flake8
       run: |
         poetry run flake8 .
+        poetry export -f requirements.txt
     - name: Test with pytest
       run: |
         poetry run pytest pythonpro --cov=pythonpro

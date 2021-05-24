@@ -3,3 +3,7 @@
 
 schedule: every week
 update: insecure
+
+requirements:
+  - poetry.lock
+  - pyproject.toml
