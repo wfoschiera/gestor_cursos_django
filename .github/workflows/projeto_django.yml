@@ -38,7 +38,7 @@ jobs:
         poetry export -f requirements.txt
     - name: Test with pytest
       run: |
-        poetry run pytest pythonpro --cov=pythonpro
+        poetry run pytest gestor_cursos_django --cov=gestor_cursos_django
     - name: Posting Coverage
       run: |
         uses: codecov/codecov-action@v1
