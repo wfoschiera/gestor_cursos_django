@@ -38,11 +38,11 @@ jobs:
         poetry export -f requirements.txt
     - name: Test with pytest
       run: |
-        poetry run pytest pypro --cov=pypro
+        poetry run pytest pypro --cov=pypro --cov-report=xml
     - name: Posting Coverage
-      run: |
-        uses: codecov/codecov-action@v1
-            with:
-              token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-              fail_ci_if_error: false # optional (default = false)
-              verbose: true # optional (default = false)
+      uses: codecov/codecov-action@v1.0.12
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        fail_ci_if_error: false
+        verbose: true
+        file: ./coverage.xml
