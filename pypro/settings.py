@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import os
 from functools import partial
 from pathlib import Path
 
@@ -38,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
+    'collectfast',
     'django.contrib.staticfiles',
+    'cloudinary',
     'pypro.base',
 ]
 
@@ -74,15 +76,12 @@ WSGI_APPLICATION = 'pypro.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-default_db_url = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-
+default_db_url = 'sqlite:///' + str(BASE_DIR / 'db.sqlite3')
 parse_database = partial(dj_database_url.parse, conn_max_age=600)
 
 DATABASES = {
     'default': config('DATABASE_URL', default=default_db_url, cast=parse_database)
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -118,7 +117,29 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# Configurações do ambiente de desenvolvimento
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
+
+CLOUDINARY_URL = config('CLOUDINARY_URL')
+
+COLLECTFAST_ENABLED = False
+
+# Storage configuration in
+if CLOUDINARY_URL:
+    CLOUDINARY_STORAGE = {  # pragma: no cover
+        'CLOUDINARY_URL': config('CLOUDINARY_URL')
+    }
+    # static assets
+    STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'  # pragma: no cover
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'  # pragma: no cover
+
+    # Media assets
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # pragma: no cover
+    COLLECTFAST_ENABLED = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
