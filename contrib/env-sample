@@ -3,3 +3,5 @@ SECRET_KEY='DEV_LOCAL_SEM_SECRET'
 ALLOWED_HOSTS=localhost,127.0.0.1
 DATABASE_URL=postgres://postgres:postgres@localhost/postgres
 CLOUDINARY_URL='api_key.api_secret@cloudname
+INTERNAL_IPS=127.0.0.1
+SENTRY_DSN=
