@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from functools import partial
 from pathlib import Path
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import dj_database_url
 from decouple import config, Csv
@@ -23,9 +26,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
@@ -77,7 +77,9 @@ WSGI_APPLICATION = 'pypro.wsgi.application'
 
 # Django debug toolbar
 # O middleware do django toolbar não pode ficar antes de qualquer middleware que faça encoding na nossa app
-DEBUG = config('DEBUG', default=False)
+# SECURITY WARNING: don't run with debug turned on in production!
+
+DEBUG = config('DEBUG', cast=bool)
 INTERNAL_IPS = config('INTERNAL_IPS', cast=Csv(), default='127.0.0.1')
 if DEBUG:
     INSTALLED_APPS.append('debug_toolbar')
@@ -154,3 +156,19 @@ if CLOUDINARY_URL:
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SENTRY_DSN = config('SENTRY_DSN', default=None)
+if SENTRY_DSN:
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        integrations=[DjangoIntegration()],
+
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=1.0,
+
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True
+    )
