@@ -75,6 +75,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pypro.wsgi.application'
 
+# Django debug toolbar
+# O middleware do django toolbar não pode ficar antes de qualquer middleware que faça encoding na nossa app
+DEBUG = config('DEBUG', default=False)
+INTERNAL_IPS = config('INTERNAL_IPS', cast=Csv(), default='127.0.0.1')
+if DEBUG:
+    INSTALLED_APPS.append('debug_toolbar')
+    MIDDLEWARE.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 default_db_url = 'sqlite:///' + str(BASE_DIR / 'db.sqlite3')
