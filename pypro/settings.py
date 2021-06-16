@@ -135,14 +135,17 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
-CLOUDINARY_URL = config('CLOUDINARY_URL')
+CLOUD_NAME = config('CLOUD_NAME')
 
 COLLECTFAST_ENABLED = False
 
 # Storage configuration in
-if CLOUDINARY_URL:
+if CLOUD_NAME:
     CLOUDINARY_STORAGE = {  # pragma: no cover
-        'CLOUDINARY_URL': config('CLOUDINARY_URL')
+        'CLOUD_NAME': config('CLOUD_NAME'),
+        'API_KEY': config('API_KEY'),
+        'API_SECRET': config('API_SECRET'),
+
     }
     # static assets
     STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'  # pragma: no cover
