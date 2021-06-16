@@ -1,5 +1,5 @@
--   repo: https://github.com/wfoschiera/gestor_cursos_django
-    rev: ''  # pick a git hash / tag to point to
+repos:
+-   repo: https://github.com/pycqa/flake8
+    rev: 3.9.0
     hooks:
     -   id: flake8
-    -   id: poetry lock
