@@ -17,12 +17,10 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 
-from pypro.base.views import home, trigger_error_sentry
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home),
-    path('sentry-debug/', trigger_error_sentry),
+    path('', include('pypro.base.urls')),
 ]
 
 if settings.DEBUG:
