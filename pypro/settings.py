@@ -32,18 +32,6 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 AUTH_USER_MODEL = 'base.User'
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'cloudinary_storage',
-    'collectfast',
-    'django.contrib.staticfiles',
-    'cloudinary',
-    'pypro.base',
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,6 +41,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'collectfast',
+    'cloudinary',
+    'pypro.base',
 ]
 
 ROOT_URLCONF = 'pypro.urls'
