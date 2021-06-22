@@ -141,6 +141,7 @@ COLLECTFAST_ENABLED = False
 
 # Storage configuration in
 if CLOUD_NAME:
+    # COLLECTFAST_ENABLED = True
     CLOUDINARY_STORAGE = {  # pragma: no cover
         'CLOUD_NAME': config('CLOUD_NAME'),
         'API_KEY': config('API_KEY'),
@@ -153,7 +154,9 @@ if CLOUD_NAME:
 
     # Media assets
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # pragma: no cover
-    COLLECTFAST_ENABLED = True
+
+    # COLLECTFAST_STRATEGY = 'pypro.config.cloudinary_strategy'
+    # 'collectfast.strategies.filesystem.FileSystemStrategy'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
