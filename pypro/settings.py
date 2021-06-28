@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'collectfast',
     'cloudinary',
     'pypro.base',
+    'pypro.aperitivos',
 ]
 
 ROOT_URLCONF = 'pypro.urls'
