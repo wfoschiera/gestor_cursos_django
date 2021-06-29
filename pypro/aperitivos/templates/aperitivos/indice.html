@@ -1,0 +1,84 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load static %}
+{% block title %}Adestec - Aperitivos{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mt-2 mb-3">Conheça nosso conteúdo gratuito</h1>
+            <ol> {% for video in videos %}
+                <li>{{ video.titulo | default:"Faltando titulo" }}</li>
+                {% empty %}
+                    <li> Não foi encontrado nenhum vídeo de aperitivo</li>
+                {% endfor %}
+            </ol>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+        </div>
+    </div>
+
+    <div class="row mt-4 mb-4">
+        <h2>Gostou do conteúdo, veja nossos cursos disponíveis:</h2>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <h5 class="card-header">
+                    Introdução à programação
+                </h5>
+                <div class="card-body">
+                    <p class="card-text">
+                        Curso de introdução ao desenvolvimento web. Neste curso são tratados assuntos relacionados a
+                        lógica de programação, boas práticas de desenvolvimento como o versionamento, a integração e
+                        entrega contínua e testes automatizados. Além de apresentar as principais linguagens de
+                        programação voltadas ao desenvolvimento web e seus frameworks.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <p> Inscrições até 01/08/2021</p>
+                    <script src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
+                            data-preference-id="27688690-45349de3-f487-4f30-b314-1ae53654c8f7"
+                            data-source="button"></script>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <h5 class="card-header">
+                    Informática profissional
+                </h5>
+                <div class="card-body">
+                    <p class="card-text">
+                        Curso de introdução ao desenvolvimento web. Neste curso são tratados assuntos relacionados a
+                        lógica de programação, boas práticas de desenvolvimento como o versionamento, a integração e
+                        entrega contínua e testes automatizados. Além de apresentar as principais linguagens de
+                        programação voltadas ao desenvolvimento web e seus frameworks.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Próxima turma sem data prevista
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="card">
+                <h5 class="card-header">
+                    Técnico em informática
+                </h5>
+                <div class="card-body">
+                    <p class="card-text">
+                        Curso de introdução ao desenvolvimento web. Neste curso são tratados assuntos relacionados a
+                        lógica de programação, boas práticas de desenvolvimento como o versionamento, a integração e
+                        entrega contínua e testes automatizados. Além de apresentar as principais linguagens de
+                        programação voltadas ao desenvolvimento web e seus frameworks.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Próxima turma sem data prevista
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
