@@ -1,17 +1,18 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% load static %}
-{% block title %}Python Pro - Aperitivos{% endblock title %}
+{% block title %}Adestec - Aperitivos{% endblock title %}
 {% block body %}
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="mt-2 mb-3">{{ video.titulo | default:"Título Faltando" }}</h1>
-            <div style="padding:56.25% 0 0 0;position:relative;">
-                <iframe src="https://player.vimeo.com/video/{{ video.vimeo_id }}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-                        style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Portal Web"></iframe>
-            </div>
+            <h1 class="mt-2 mb-3">Conheça nosso conteúdo gratuito</h1>
+            <ol> {% for video in videos %}
+                <li>{{ video.titulo | default:"Faltando titulo" }}</li>
+                {% empty %}
+                    <li> Não foi encontrado nenhum vídeo de aperitivo</li>
+                {% endfor %}
+            </ol>
             <script src="https://player.vimeo.com/api/player.js"></script>
         </div>
     </div>
