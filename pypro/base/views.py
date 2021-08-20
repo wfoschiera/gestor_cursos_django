@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, 'base/home.html')
+    return render(request, "base/home.html")
 
 
 def trigger_error_sentry(request):

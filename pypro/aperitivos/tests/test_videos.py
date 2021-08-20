@@ -14,13 +14,13 @@ def video(db):
 # os testes foram alterados para buscar dinamicamente por videos presentes no DB
 @pytest.fixture()
 def resp(client, video):
-    return client.get(reverse('aperitivos:video', args=(video.slug,)))
+    return client.get(reverse("aperitivos:video", args=(video.slug,)))
 
 
 # testando caso de insucesso
 @pytest.fixture()
 def resp_video_nao_encontrado(client, video):
-    return client.get(reverse('aperitivos:video', args=(video.slug + 'video_nao_existente',)))
+    return client.get(reverse("aperitivos:video", args=(video.slug + "video_nao_existente",)))
 
 
 def test_status_code(resp):

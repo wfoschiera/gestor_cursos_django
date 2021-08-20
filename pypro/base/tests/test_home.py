@@ -6,7 +6,7 @@ from pypro.base.django_assertions import assert_contains
 
 @pytest.fixture
 def resp(client):
-    resp = client.get(reverse('base:home'))
+    resp = client.get(reverse("base:home"))
     return resp
 
 
@@ -15,7 +15,7 @@ def test_status_code(resp):
 
 
 def test_title(resp):
-    assert_contains(resp, '<title>Cursos Adestec - Home</title>')
+    assert_contains(resp, "<title>Cursos Adestec - Home</title>")
 
 
 def test_home_link(resp):
