@@ -9,4 +9,4 @@ class Video(models.Model):
     creation = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
-        return reverse('aperitivos:video', args=(self.slug,))
+        return reverse("aperitivos:video", args=(self.slug,))

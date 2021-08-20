@@ -6,4 +6,4 @@ import pytest
 @pytest.mark.skip(reason="no way of currently testing this")
 def test_sentry_debug(client: Client):
     with pytest.raises(ZeroDivisionError):
-        client.get('/sentry-debug/')
+        client.get("/sentry-debug/")

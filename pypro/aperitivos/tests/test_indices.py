@@ -13,7 +13,7 @@ def videos(db):
 
 @pytest.fixture
 def resp(client, videos):
-    return client.get(reverse('aperitivos:indice'))
+    return client.get(reverse("aperitivos:indice"))
 
 
 def test_status_code(resp):
@@ -27,6 +27,7 @@ def test_titulo_video(resp, videos):
 
 def test_slug_video(resp, videos):
     for video in videos:
-        video_link = reverse('aperitivos:video', args=(video.slug,))
-        assert_contains(resp,
-                        f'href="{video_link}"')  # vou explicitar que quero que contenha o link (a href) no template
+        video_link = reverse("aperitivos:video", args=(video.slug,))
+        assert_contains(
+            resp, f'href="{video_link}"'
+        )  # vou explicitar que quero que contenha o link (a href) no template

@@ -17,7 +17,7 @@ class CloudinaryStrategy(ManifestHashMixin, CachingHashStrategy):
         if not response.ok:
             return
 
-        return self._extract_hash_from_etag(response.headers['ETAG'])
+        return self._extract_hash_from_etag(response.headers["ETAG"])
 
     def _extract_hash_from_etag(self, etag):
         return etag.split('"')[1]
