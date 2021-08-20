@@ -42,6 +42,7 @@ exclude = '''
   | \.tox
   | \.venv
   | migrations/
+  | migrations
   | _build
   | buck-out
   | build
