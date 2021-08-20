@@ -1,3 +1,4 @@
+from model_bakery import baker
 import pytest
 from django.urls import reverse
 
@@ -7,9 +8,7 @@ from pypro.base.django_assertions import assert_contains
 
 @pytest.fixture
 def video(db):
-    v = Video(slug='motivacao', titulo='Video Aperitivo: Motivação', vimeo_id='569032237')
-    v.save()
-    return v
+    return baker.make(Video)
 
 
 # os testes foram alterados para buscar dinamicamente por videos presentes no DB
