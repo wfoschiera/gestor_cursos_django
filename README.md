@@ -24,5 +24,9 @@ Para executar o servidor:
 ```shell
 python manage.py runserver
 ```
+Caso seja desenvolvedor, instale a dependências e habilite o pre-commit hook para facilitar a verificação do código.
+```shell
+pre-commit install
+```
 O app rodará na porta padrão do localhost, acessível em: [127.0.0.1:8000](127.0.0.1:8000).
 
