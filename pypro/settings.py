@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "pypro.base",
     "pypro.aperitivos",
     "pypro.modulos",
+    "ordered_model",
 ]
 
 ROOT_URLCONF = "pypro.urls"
