@@ -9,9 +9,9 @@ from django.utils.translation import gettext_lazy as _
 
 class Modulo(OrderedModel):
     titulo = models.CharField(max_length=64)
-    publico = models.TextField()
-    descricao = models.TextField(null=True)
-    order = models.PositiveIntegerField(_("order"), editable=False, db_index=True)
+    publico = models.TextField(default="")
+    descricao = models.TextField(default="")
+    order = models.PositiveIntegerField(_("order"), editable=False, db_index=True, default="")
 
     class Meta(OrderedModel.Meta):
         pass
