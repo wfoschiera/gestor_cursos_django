@@ -7,7 +7,7 @@ from ordered_model.models import OrderedModel
 class Modulo(OrderedModel):
     titulo = models.CharField(max_length=64)
     publico = models.TextField()
-    descricao = models.TextField()
+    descricao = models.TextField(null=True)
 
     class Meta(OrderedModel.Meta):
         pass
