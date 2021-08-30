@@ -58,10 +58,7 @@ pathspec = ">=0.9.0,<1"
 platformdirs = ">=2"
 regex = ">=2020.1.8"
 tomli = ">=0.2.6,<2.0.0"
-typing-extensions = [
-    {version = ">=3.10.0.0", markers = "python_version < \"3.10\""},
-    {version = "!=3.10.0.1", markers = "python_version >= \"3.10\""},
-]
+typing-extensions = ">=3.10.0.0"
 
 [package.extras]
 colorama = ["colorama (>=0.4.3)"]
@@ -612,14 +609,6 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "typing-extensions"
-version = "3.7.4.3"
-description = "Backported and Experimental Type Hints for Python 3.5+"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
-name = "typing-extensions"
 version = "3.10.0.1"
 description = "Backported and Experimental Type Hints for Python 3.5+"
 category = "main"
@@ -660,8 +649,8 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.8.6"
-content-hash = "f011c9ee788f77ab161ee330315f385dc9ff8ab311ce985d18a37e6d8df01bcd"
+python-versions = "3.8.6"
+content-hash = "2118eadb804562b28592a9d65ded682f7b8969330c8a7439524f516046cdcba9"
 
 [metadata.files]
 asgiref = [
@@ -1024,9 +1013,6 @@ tomli = [
     {file = "tomli-1.2.1.tar.gz", hash = "sha256:a5b75cb6f3968abb47af1b40c1819dc519ea82bcc065776a866e8d74c5ca9442"},
 ]
 typing-extensions = [
-    {file = "typing_extensions-3.7.4.3-py2-none-any.whl", hash = "sha256:dafc7639cde7f1b6e1acc0f457842a83e722ccca8eef5270af2d74792619a89f"},
-    {file = "typing_extensions-3.7.4.3-py3-none-any.whl", hash = "sha256:7cb407020f00f7bfc3cb3e7881628838e69d8f3fcab2f64742a5e76b2f841918"},
-    {file = "typing_extensions-3.7.4.3.tar.gz", hash = "sha256:99d4073b617d30288f569d3f13d2bd7548c3a7e4c8de87db09a9d29bb3a4a60c"},
     {file = "typing_extensions-3.10.0.1-py2-none-any.whl", hash = "sha256:8bbffbd37fbeb9747a0241fdfde5ae99d4531ad1d1a41ccaea62100e15a5814c"},
     {file = "typing_extensions-3.10.0.1-py3-none-any.whl", hash = "sha256:045dd532231acfa03628df5e0c66dba64e2cc8fc8b844538d4ad6d5dd6cb82dc"},
     {file = "typing_extensions-3.10.0.1.tar.gz", hash = "sha256:83af6730a045fda60f46510f7f1f094776d90321caa4d97d20ef38871bef4bd3"},
